@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ListViewLayOut"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="3dip"
+    android:background="@color/CadetBlue"
+    android:descendantFocusability="blocksDescendants" >
+
+    <ImageView
+        android:layout_alignParentLeft="true"
+        android:id="@+id/ImageView_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="40px"
+        android:layout_centerVertical="true"
+        android:src="@drawable/person"
+        />
+
+    <TextView android:layout_toRightOf="@id/ImageView_icon"
+        android:id="@+id/listTextView"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/DarkOrange"
+        />
+    <Button
+        android:id="@+id/listButton"
+        android:layout_toRightOf="@id/listTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="@string/bookmark"/>
+    
+
+</RelativeLayout>

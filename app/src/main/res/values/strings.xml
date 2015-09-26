@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">ShuffleWiki</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="bookmark">bookmark</string>
     <string name="action_settings">Settings</string>
+
+    <string name="Ok_Label">OK</string>
+    <string name="Retry_Label">Retry</string>
+    <string name="Exit_Label">Exit</string>
 </resources>
