@@ -70,26 +70,20 @@ public class ParseSaveMgr
   {
     mID = CustomApplication.getAccount();
     ParseQuery<ParseObject> query = ParseQuery.getQuery(Save.FileName.Appdata);
-    query.getInBackground(Save.Appdata.Account, new GetCallback<ParseObject>()
-    {
+    query.whereEqualTo(Save.Appdata.Account, mID);
+    query.getFirstInBackground(new GetCallback<ParseObject>() {
       public void done(ParseObject object, ParseException e)
       {
-        if (object == null)
-        {
-          if (e.getCode() == 101)
-          {
+        if (object == null) {
+          if (e.getCode() == 101) {
             mObject = new ParseObject(Save.FileName.Appdata);
             mObject.put(Save.Appdata.Account, mID);
             mSaveMap.put(Save.FileName.Appdata, new SaveFile(mObject));
             callBack.onLoadComplete();
-          }
-          else
-          {
+          } else {
             callBack.onError(e);
           }
-        }
-        else
-        {
+        } else {
           mObject = object;
           mSaveMap.put(Save.FileName.Appdata, new SaveFile(mObject));
           mObject.saveInBackground();

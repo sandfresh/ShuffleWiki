@@ -9,11 +9,6 @@ public class SaveFile
 {
     ParseObject mObject;
 
-    SaveFile(String name)
-    {
-        mObject = new ParseObject(name);
-    }
-
     SaveFile(ParseObject object)
     {
         mObject = object;

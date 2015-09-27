@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ListViewLayOut1"
+    android:id="@+id/ListViewLayOut2"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:padding="3dip"
@@ -10,33 +9,23 @@
 
     <ImageView
         android:layout_alignParentLeft="true"
-        android:id="@+id/ImageView_icon1"
+        android:id="@+id/ImageView_icon2"
         android:layout_width="wrap_content"
         android:layout_height="40px"
         android:layout_centerVertical="true"
         android:src="@drawable/person"
         />
 
-    <TextView android:layout_toRightOf="@id/ImageView_icon1"
-        android:id="@+id/listTextView1"
+    <TextView android:layout_toRightOf="@id/ImageView_icon2"
+        android:id="@+id/listTextView2"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:textColor="@color/DarkOrange"
         />
     <Button
-        android:id="@+id/listButton1"
-        android:layout_toRightOf="@id/listTextView1"
+        android:id="@+id/listButton2"
+        android:layout_toRightOf="@id/listTextView2"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="@string/bookmark_label"/>
-
-    <ProgressBar
-        android:layout_centerInParent="true"
-        android:id="@+id/list_fragment_progressBar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:visibility="gone"
-        />
+        android:text="@string/del_label"/>
 </RelativeLayout>

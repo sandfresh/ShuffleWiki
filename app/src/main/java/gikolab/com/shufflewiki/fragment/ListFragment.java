@@ -40,7 +40,6 @@ public class ListFragment extends Fragment
     private ArrayList<String> mDataList;
     private CustomAdapter mListAdapter;
 
-
     private View mView;
 
     @Override
@@ -69,7 +68,7 @@ public class ListFragment extends Fragment
         {
             mDataList = new ArrayList<String>();
             mListView = (ListView) mView.findViewById(R.id.listview1);
-            mListAdapter = new CustomAdapter(this.getActivity(), R.id.listTextView, mDataList);
+            mListAdapter = new CustomAdapter(this.getActivity(), R.id.listTextView1, mDataList);
             mListView.setAdapter(mListAdapter);
 
             final Button update = (Button) mView.findViewById(R.id.updateBtn);
@@ -102,6 +101,8 @@ public class ListFragment extends Fragment
                         mListAdapter.notifyDataSetChanged();
                 }
             };
+
+            updateListView();
         }
         Log.e("Fragement", "ActivityCreated : List");
 
@@ -109,12 +110,17 @@ public class ListFragment extends Fragment
     }
 
 
-    public void updateListView() {
-        Wiki.getInstance().getTitleInBackground(new GetNetCallBack() {
+    public void updateListView()
+    {
+        Wiki.getInstance().getTitleInBackground(new GetNetCallBack()
+        {
             @Override
-            public void done(JSONObject object, WikiException e) {
-                try {
-                    if (object != null) {
+            public void done(JSONObject object, WikiException e)
+            {
+                try
+                {
+                    if (object != null)
+                    {
                         Log.i("Activity", object.toString());
                         JSONObject query = object.getJSONObject("query");
                         JSONArray random = query.getJSONArray("random");
@@ -128,7 +134,8 @@ public class ListFragment extends Fragment
                         Message message = mUpdateHandler.obtainMessage(1, obj);
                         mUpdateHandler.sendMessage(message);
                     }
-                } catch (Exception e2) {
+                }
+                catch (Exception e2) {
                     e2.printStackTrace();
                 }
             }
@@ -162,16 +169,17 @@ public class ListFragment extends Fragment
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            // TODO Auto-generated method stub
+        public View getView(int position, View convertView, ViewGroup parent)
+        {
+
             //return null;
             View view;
             ViewHolder holder = null;
             if (convertView == null) {
                 view = mInflater.inflate(R.layout.listview_main, parent, false);
                 holder = new ViewHolder();
-                holder.listText = (TextView) view.findViewById(R.id.listTextView);
-                holder.listBtn = (Button) view.findViewById(R.id.listButton);
+                holder.listText = (TextView) view.findViewById(R.id.listTextView1);
+                holder.listBtn = (Button) view.findViewById(R.id.listButton1);
                 view.setTag(holder);
             } else {
                 view = convertView;
@@ -185,7 +193,7 @@ public class ListFragment extends Fragment
                 holder.listBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Wiki.getInstance().saveBookMark(listStr);
+                        Wiki.getInstance().addBookMark(listStr);
                     }
                 });
             }

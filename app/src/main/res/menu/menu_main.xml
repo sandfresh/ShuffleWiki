@@ -3,10 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
 
 
-    <item android:id="@+id/page"
-        android:title="Page" />
-    <item android:id="@+id/detail"
-        android:title="Detail" />
-    <item android:id="@+id/bookmark"
-        android:title="BookMark" />
+    <item android:id="@+id/menupage"
+        android:title="Page"
+        android:icon="@drawable/ic_pageview_white_24dp"
+        app:showAsAction="ifRoom" />/>
+    <item android:id="@+id/memubookmark"
+        android:title="BookMark"
+        android:icon="@drawable/ic_bookmark_white_24dp"
+        app:showAsAction="ifRoom" />
 </menu>

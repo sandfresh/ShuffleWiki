@@ -8,17 +8,17 @@
     android:background="@color/white">
 
     <ImageView
-        android:id="@+id/page"
+        android:id="@+id/actionpage"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:src="@drawable/ic_pageview_black_24dp"/>
+        android:src="@drawable/ic_pageview_white_24dp"/>
 
     <ImageView
-        android:id="@+id/book"
+        android:id="@+id/actiobook"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:src="@drawable/ic_book_black_24dp"/>
+        android:src="@drawable/ic_bookmark_white_24dp"/>
 
 </LinearLayout>

@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">ShuffleWiki</string>
 
-    <string name="bookmark">bookmark</string>
+    <string name="bookmark_label">bookmark</string>
+    <string name="del_label">del</string>
     <string name="action_settings">Settings</string>
 
     <string name="Ok_Label">OK</string>
