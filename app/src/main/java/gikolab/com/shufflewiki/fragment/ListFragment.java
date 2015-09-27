@@ -1,8 +1,6 @@
 package gikolab.com.shufflewiki.fragment;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,8 +31,7 @@ import gikolab.com.shufflewiki.retrive.WikiException;
 /**
  * Created by stalin on 2015/9/26.
  */
-public class ListFragment extends Fragment
-{
+public class ListFragment extends Fragment {
     private ListView mListView;
     private Handler mUpdateHandler;
     private ArrayList<String> mDataList;
@@ -45,8 +42,8 @@ public class ListFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mView =  inflater.inflate(R.layout.fragement_list, container, false);
-        Log.e("Fragement","CreatView : List");
+        mView = inflater.inflate(R.layout.fragement_list, container, false);
+        Log.e("Fragement", "CreatView : List");
         return mView;
     }
 
@@ -54,73 +51,54 @@ public class ListFragment extends Fragment
     public void onActivityCreated(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null)
-        {
-            Log.e("Fragement","SaveInstacne Not Null");
 
-            FragmentManager fragmentManager = getFragmentManager();
-            FragmentTransaction transaction = fragmentManager
-                    .beginTransaction();
-            transaction.show(ListFragment.this);
-            transaction.commit();
-        }
-        else
-        {
-            mDataList = new ArrayList<String>();
-            mListView = (ListView) mView.findViewById(R.id.listview1);
-            mListAdapter = new CustomAdapter(this.getActivity(), R.id.listTextView1, mDataList);
-            mListView.setAdapter(mListAdapter);
+        mDataList = new ArrayList<String>();
+        mListView = (ListView) mView.findViewById(R.id.listview1);
+        mListAdapter = new CustomAdapter(this.getActivity(), R.id.listTextView1, mDataList);
+        mListView.setAdapter(mListAdapter);
 
-            final Button update = (Button) mView.findViewById(R.id.updateBtn);
-            update.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v)
-                {
-                    Log.i("Acitiity", "Update");
-                    ListFragment.this.updateListView();
-                }
-            });
+        final Button update = (Button) mView.findViewById(R.id.updateBtn);
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("Acitiity", "Update");
+                ListFragment.this.updateListView();
+            }
+        });
 
-            mListView.setClickable(true);
-            mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mListView.setClickable(true);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-                @Override
-                public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-                    String object = arg0.getItemAtPosition(position).toString();
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+                String object = arg0.getItemAtPosition(position).toString();
 
-                    Intent intent = new Intent(getActivity(), DetailActivity.class);
-                    intent.putExtra("name",object);
-                    startActivity(intent);
-                }
-            });
-            mUpdateHandler = new Handler() {
-                @Override
-                public void handleMessage(Message msg) {
-                    String MsgString = (String) msg.obj;
-                    if (MsgString.equals("UpdateListView"))
-                        mListAdapter.notifyDataSetChanged();
-                }
-            };
+                Intent intent = new Intent(getActivity(), DetailActivity.class);
+                intent.putExtra("name", object);
+                startActivity(intent);
+            }
+        });
+        mUpdateHandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                String MsgString = (String) msg.obj;
+                if (MsgString.equals("UpdateListView"))
+                    mListAdapter.notifyDataSetChanged();
+            }
+        };
 
-            updateListView();
-        }
+        updateListView();
+
         Log.e("Fragement", "ActivityCreated : List");
-
-
     }
 
 
-    public void updateListView()
-    {
-        Wiki.getInstance().getTitleInBackground(new GetNetCallBack()
-        {
+    public void updateListView() {
+        Wiki.getInstance().getTitleInBackground(new GetNetCallBack() {
             @Override
-            public void done(JSONObject object, WikiException e)
-            {
-                try
-                {
-                    if (object != null)
-                    {
+            public void done(JSONObject object, WikiException e) {
+                try {
+                    if (object != null) {
                         Log.i("Activity", object.toString());
                         JSONObject query = object.getJSONObject("query");
                         JSONArray random = query.getJSONArray("random");
@@ -134,8 +112,7 @@ public class ListFragment extends Fragment
                         Message message = mUpdateHandler.obtainMessage(1, obj);
                         mUpdateHandler.sendMessage(message);
                     }
-                }
-                catch (Exception e2) {
+                } catch (Exception e2) {
                     e2.printStackTrace();
                 }
             }
@@ -169,8 +146,7 @@ public class ListFragment extends Fragment
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent)
-        {
+        public View getView(int position, View convertView, ViewGroup parent) {
 
             //return null;
             View view;
